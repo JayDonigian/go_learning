@@ -1,8 +1,7 @@
-
 ## Intro to Tape Libraries
-[Basics](Basics)
-[Preparation](Preparation)
-[Partition Creation](Partition Creation)
+[Basics](#Basics)
+[Preparation](#Preparation)
+[Partition Creation](#Partition-Creation)
 
 #### Basics
  - [ ] Reserve a Library in SMIRC. Keep it small, a python(T950v) or 1-2 frame TFinity.
@@ -19,3 +18,4 @@
  
 #### Partition Creation
  - [ ] Maintenance > Tools > Show Advanced > Reset Library to Factory Defaults
+
