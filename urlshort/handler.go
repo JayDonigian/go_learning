@@ -1,24 +1,27 @@
 package urlshort
 
 import (
+	"gopkg.in/yaml.v2"
 	"net/http"
 )
 
-// MapHandler will return an http.HandlerFunc (which also
-// implements http.Handler) that will attempt to map any
-// paths (keys in the map) to their corresponding URL (values
-// that each key in the map points to, in string format).
-// If the path is not provided in the map, then the fallback
-// http.Handler will be called instead.
-func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.HandlerFunc {
-	//	TODO: Implement this...
-	return nil
+// MapHandler will return an http.HandlerFunc (which also implements http.Handler) that will attempt to map any
+// paths (keys in the map) to their corresponding URL (values that each key in the map points to, in string format).
+// If the path is not provided in the map, then the fallback http.Handler will be called instead.
+func MapHandler(pathsToURLS map[string]string, fallback http.Handler) http.HandlerFunc {
+	return func(writer http.ResponseWriter, request *http.Request) {
+		uri := request.RequestURI
+		redirectUrl, ok := pathsToURLS[uri]
+		if ok {
+			http.Redirect(writer, request, redirectUrl, http.StatusPermanentRedirect)
+		} else {
+			fallback.ServeHTTP(writer, request)
+		}
+	}
 }
 
-// YAMLHandler will parse the provided YAML and then return
-// an http.HandlerFunc (which also implements http.Handler)
-// that will attempt to map any paths to their corresponding
-// URL. If the path is not provided in the YAML, then the
+// YAMLHandler will parse the provided YAML and then return an http.HandlerFunc (which also implements http.Handler)
+// that will attempt to map any paths to their corresponding URL. If the path is not provided in the YAML, then the
 // fallback http.Handler will be called instead.
 //
 // YAML is expected to be in the format:
@@ -26,12 +29,29 @@ func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.Handl
 //     - path: /some-path
 //       url: https://www.some-url.com/demo
 //
-// The only errors that can be returned all related to having
-// invalid YAML data.
+// The only errors that can be returned all related to having invalid YAML data.
 //
-// See MapHandler to create a similar http.HandlerFunc via
-// a mapping of paths to urls.
+// See MapHandler to create a similar http.HandlerFunc via a mapping of paths to urls.
 func YAMLHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
-	// TODO: Implement this...
-	return nil, nil
+	parsedYaml, err := parseYaml(yml)
+	if err != nil {
+		return nil, err
+	}
+	pathMap := buildMap(parsedYaml)
+	return MapHandler(pathMap, fallback), nil
+}
+
+func parseYaml(yml []byte) ([]map[string]string, error) {
+	var yamlMap []map[string]string
+	err := yaml.Unmarshal(yml, &yamlMap)
+	return yamlMap, err
+}
+
+func buildMap(parsedYaml []map[string]string) map[string]string {
+	megaMap := make(map[string]string)
+	for _, yamlMap := range parsedYaml {
+		key := yamlMap["path"]
+		megaMap[key] = yamlMap["url"]
+	}
+	return megaMap
 }
