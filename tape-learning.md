@@ -15,6 +15,55 @@
  - [ ] Find a table or cart. You'll need it to hold your media.
  - [ ] Set the table/cart up next to the front of your library.
  - [ ] Export media from the library
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
+ - [ ] FILLER 
  
 #### Partition Creation
  - [ ] Maintenance > Tools > Show Advanced > Reset Library to Factory Defaults
